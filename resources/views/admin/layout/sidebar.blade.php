@@ -38,6 +38,61 @@
                     </a>
                 </li>
 
+                @if(user_akses2('about', Auth::user()->role_id )->update ?? 0 =='1') 
+                <li>
+                    <a href="{{ route('about.index') }}">
+                        <i class="fe-box"></i>
+                        <span> About</span>
+                    </a>
+                </li>
+                @endif
+
+                @if(user_akses2('service', Auth::user()->role_id )->update ?? 0 =='1') 
+                <li>
+                    <a href="{{ route('service.index') }}">
+                        <i class="fe-settings"></i>
+                        <span> Service</span>
+                    </a>
+                </li>
+                @endif
+
+                @if(user_akses2('client', Auth::user()->role_id )->update ?? 0 =='1') 
+                <li>
+                    <a href="{{ route('client.index') }}">
+                        <i class="fe-users"></i>
+                        <span> Client</span>
+                    </a>
+                </li>
+                @endif
+
+                @if(user_akses2('config', Auth::user()->role_id )->update ?? 0 =='1') 
+                <li>
+                    <a href="{{ route('config.index') }}">
+                        <i class="fe-chrome"></i>
+                        <span> Website Setting</span>
+                    </a>
+                </li>
+                @endif
+
+                <li class="menu-title mt-2">Product</li>
+
+                @if(user_akses2('category', Auth::user()->role_id )->update ?? 0 =='1') 
+                <li>
+                    <a href="{{ route('category-product.index') }}">
+                        <i class="fe-briefcase"></i>
+                        <span> Category Product</span>
+                    </a>
+                </li>
+                @endif
+                @if(user_akses2('category', Auth::user()->role_id )->update ?? 0 =='1') 
+                <li>
+                    <a href="{{ route('product.index') }}">
+                        <i class="fe-package"></i>
+                        <span> Product</span>
+                    </a>
+                </li>
+                @endif
+
                 @if(user_akses2('user', Auth::user()->role_id )->view ?? 0 =='1' OR user_akses2('role', Auth::user()->role_id )->view ?? 0 =='1')  
                 <li class="menu-title mt-2">User Setting</li>
                 @endif

@@ -16,8 +16,8 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'username' => 'required|string',
-            'password' => 'required|string',
+            'username' => 'required|exists:users,username',
+            'password' => 'required|min:6'
         ]);
 
         if (Auth::attempt($credentials)) {
@@ -26,9 +26,7 @@ class AuthController extends Controller
             return redirect()->intended('admin-panel')->with(['success' => 'Login Success']);
         }
 
-        return back()->withErrors([
-            'username' => 'Username is not registered',
-        ])->with(['error' => 'Login Failed, Please try again!!!']);
+        return back()->with(['error' => 'Login Failed, Please try again!!!']);
     }
 
     public function logout() {

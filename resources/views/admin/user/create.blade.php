@@ -104,6 +104,7 @@
                                 @enderror
                             </div>
 
+
                            <div class="col-5">
                                 <div class="mb-3">
                                     <label for="Roles" class="form-label">Avatar</label>

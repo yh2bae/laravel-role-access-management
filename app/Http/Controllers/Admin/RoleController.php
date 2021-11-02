@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Role;
 use App\Models\Modul;
+use App\Models\ConfigWeb;
 use Illuminate\Http\Request;
 use App\Http\Requests\RoleRequest;
 use Illuminate\Support\Facades\DB;
@@ -13,14 +14,19 @@ class RoleController extends Controller
 {
     public function index()
     {
+        $title_page = 'Role Access';
+        $config = ConfigWeb::all()->first();
+
         $role = Role::all();
 
-        return view('admin.role.index', compact('role'));
+        return view('admin.role.index', compact('title_page','config','role'));
     }
 
     public function create()
     {
-        return view('admin.role.create');
+        $title_page = 'Create Role Access';
+        $config = ConfigWeb::all()->first();
+        return view('admin.role.create', compact('title_page', 'config'));
     }
 
     public function store(RoleRequest $request, Role $role)
@@ -34,9 +40,11 @@ class RoleController extends Controller
 
     public function edit($id)
     {
+        $title_page = 'Edit Role Access';
+        $config = ConfigWeb::all()->first();
         $role = Role::findOrFail($id);
 
-        return view('admin.role.edit', compact('role'));
+        return view('admin.role.edit', compact('title_page','config','role'));
     
     }
 
@@ -62,10 +70,12 @@ class RoleController extends Controller
 
     public function roleAccess($id)
     {
+        $title_page = 'Setting Role Access';
+        $config = ConfigWeb::all()->first();
         $role = Role::findOrFail($id);
         $modul = Modul::all();
 
-        return view('admin.role.access', compact('role', 'modul'));
+        return view('admin.role.access', compact('title_page','config','role', 'modul'));
     }
 
     public function proses_role_access(Request $request)

@@ -2,14 +2,15 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8" />
-        <title>Starter | Role Akses</title>
+        <title>{{ $title_page }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <meta content="admin" name="description" />
-        <meta content="admin" name="author" />
+        <meta content="{{ $config->nameweb }}" name="title" />
+        <meta content="{{ $config->description }}" name="description" />
+        <Meta content="{{ $config->keywords }}" name="keywords"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="{{ asset('admin/images/favicon.ico') }}">
+        <link rel="shortcut icon" href="{{ asset('upload/config/'. $config->icon) }}">
 
 		<!-- App css -->
 		<link href="{{ asset('admin/css/config/default/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />

@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\ConfigWeb;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard.index');
+        $title_page = 'Dashboard';
+        $config = ConfigWeb::all()->first();
+        
+        return view('admin.dashboard.index', compact('title_page', 'config'));
     }
 }
